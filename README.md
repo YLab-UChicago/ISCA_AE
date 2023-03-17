@@ -41,7 +41,7 @@ pip3 install numpy==1.19.5
 
 After ssh to TPU VM, download our code at :
 ```
-git clone git@github.com:YLab-UChicago/ISCA_AE.git
+git clone https://github.com/YLab-UChicago/ISCA_AE.git
 ```
 
 ## Fault injection to DNN training workloads
