@@ -11,6 +11,7 @@ To create a Cloud TPU VM, execute:
 export PROJECT_ID=${PROJECT_ID}
 gcloud alpha compute tpus tpu-vm create ${TPU_NAME} --zone={TPU_LOCATION} --accelerator-type={TPU_TYPE} --version=v2-alpha
 ```
+(This command might take a few minutes)
 
 Then ssh to the TPU VM:
 
