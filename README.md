@@ -14,7 +14,7 @@ gcloud alpha compute tpus tpu-vm create ${TPU_NAME} --zone={TPU_LOCATION} --acce
 (This command might take a few minutes)
 
 Then ssh to the TPU VM:
-
+(SSH might return error message when TPU is still in initialization. Wait for a while and the connection will be built.)
 ```
 gcloud alpha compute tpus tpu-vm ssh ${TPU_NAME} --zone=${TPU_LOCATION} --project ${PROJECT_ID}
 ```
