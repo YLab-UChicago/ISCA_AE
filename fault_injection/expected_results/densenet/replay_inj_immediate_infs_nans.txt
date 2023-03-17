@@ -1,0 +1,50 @@
+Inject to epoch: 29
+Inject to step: 26
+Load weights from gs://yiizy/golden_models/cifar10/densenet/epoch_28
+Epoch: 29/40, step: 0/49, loss: 0.81513, accuracy: 0.70996
+Epoch: 29/40, step: 1/49, loss: 0.82487, accuracy: 0.71484
+Epoch: 29/40, step: 2/49, loss: 0.80516, accuracy: 0.71777
+Epoch: 29/40, step: 3/49, loss: 0.77600, accuracy: 0.73438
+Epoch: 29/40, step: 4/49, loss: 0.78140, accuracy: 0.73633
+Epoch: 29/40, step: 5/49, loss: 0.74412, accuracy: 0.74023
+Epoch: 29/40, step: 6/49, loss: 0.77657, accuracy: 0.71875
+Epoch: 29/40, step: 7/49, loss: 0.83806, accuracy: 0.70312
+Epoch: 29/40, step: 8/49, loss: 0.74127, accuracy: 0.74023
+Epoch: 29/40, step: 9/49, loss: 0.72270, accuracy: 0.73926
+Epoch: 29/40, step: 10/49, loss: 0.74753, accuracy: 0.73047
+Epoch: 29/40, step: 11/49, loss: 0.76143, accuracy: 0.72754
+Epoch: 29/40, step: 12/49, loss: 0.78109, accuracy: 0.72461
+Epoch: 29/40, step: 13/49, loss: 0.67697, accuracy: 0.75293
+Epoch: 29/40, step: 14/49, loss: 0.82781, accuracy: 0.70801
+Epoch: 29/40, step: 15/49, loss: 0.78357, accuracy: 0.71875
+Epoch: 29/40, step: 16/49, loss: 0.78243, accuracy: 0.73340
+Epoch: 29/40, step: 17/49, loss: 0.77642, accuracy: 0.73047
+Epoch: 29/40, step: 18/49, loss: 0.75419, accuracy: 0.72266
+Epoch: 29/40, step: 19/49, loss: 0.80409, accuracy: 0.72363
+Epoch: 29/40, step: 20/49, loss: 0.75828, accuracy: 0.73047
+Epoch: 29/40, step: 21/49, loss: 0.79034, accuracy: 0.71484
+Epoch: 29/40, step: 22/49, loss: 0.72327, accuracy: 0.72852
+Epoch: 29/40, step: 23/49, loss: 0.77480, accuracy: 0.72363
+Epoch: 29/40, step: 24/49, loss: 0.80658, accuracy: 0.73047
+Epoch: 29/40, step: 25/49, loss: 0.75696, accuracy: 0.74609
+Inject worker: 6
+Inject layer: densenet_dense_block_4_bottleneck_9_conv1
+Shape for target layer is (128, 1, 1, 128)
+Position is (89, 0, 0, 112), Golden data is -2.486046552658081, inject data is -2.15399317848972e-19
+Position is (89, 0, 0, 113), Golden data is 3.302150249481201, inject data is -4.91510131206407e-11
+Position is (89, 0, 0, 114), Golden data is -0.8775725364685059, inject data is -3.9910497046576e-30
+Position is (89, 0, 0, 115), Golden data is -3.5374350547790527, inject data is -77702823936.0
+Position is (89, 0, 0, 116), Golden data is -3.608011484146118, inject data is 1.14990560950805e-36
+Position is (89, 0, 0, 117), Golden data is -1.0010807514190674, inject data is -2.79507771094867e-11
+Position is (89, 0, 0, 118), Golden data is 0.5370392203330994, inject data is 1.09320502017709e-23
+Position is (89, 0, 0, 119), Golden data is -3.5074260234832764, inject data is 1.3872179602829e-22
+Position is (89, 0, 0, 120), Golden data is 0.6005891561508179, inject data is -1.62111849064877e-16
+Position is (89, 0, 0, 121), Golden data is -2.606684923171997, inject data is -9.61267448496958e+27
+Position is (89, 0, 0, 122), Golden data is -1.6672769784927368, inject data is 1.70890937547135e+33
+Position is (89, 0, 0, 123), Golden data is -4.405471324920654, inject data is 1.27629186379016e-19
+Position is (89, 0, 0, 124), Golden data is 3.8082103729248047, inject data is 5.25015930179507e-05
+Position is (89, 0, 0, 125), Golden data is -3.229802131652832, inject data is -4.48985499773185e-27
+Position is (89, 0, 0, 126), Golden data is 0.3768361210823059, inject data is 1.07420203824354e+31
+Position is (89, 0, 0, 127), Golden data is -0.7059649229049683, inject data is -7.73939897021596e-25
+Epoch: 29/40, step: 26/49, loss: nan, accuracy: 0.66602
+Encounter NaN! Terminate training!

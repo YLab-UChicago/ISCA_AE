@@ -1,0 +1,10 @@
+stage,bkwd_inject
+fmodel,RD
+target_worker,3
+target_layer,decoder_stack_enc_dec_attention_4_value_grad_in
+target_epoch,5
+target_step,4381
+inj_pos,{9,0,49}
+inj_values,-1.53552908409897e+16
+learning_rate,0.001
+seed,123

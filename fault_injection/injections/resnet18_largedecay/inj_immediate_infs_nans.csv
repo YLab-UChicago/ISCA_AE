@@ -1,0 +1,10 @@
+stage,bkwd_inject
+fmodel,RD
+target_worker,5
+target_layer,basicblock_2_basic_0_conv1_grad_in
+target_epoch,5
+target_step,30
+inj_pos,111/4/3/31
+inj_values,9.64076419531674e+17
+learning_rate,0.001
+seed,123

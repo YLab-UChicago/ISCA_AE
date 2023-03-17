@@ -1,0 +1,218 @@
+Inject to epoch: 36
+Inject to step: 38
+Load weights from gs://yiizy/golden_models/cifar10/densenet/epoch_35
+Epoch: 36/40, step: 0/49, loss: 0.79726, accuracy: 0.72754
+Epoch: 36/40, step: 1/49, loss: 0.72232, accuracy: 0.75586
+Epoch: 36/40, step: 2/49, loss: 0.68727, accuracy: 0.74512
+Epoch: 36/40, step: 3/49, loss: 0.76104, accuracy: 0.73340
+Epoch: 36/40, step: 4/49, loss: 0.73283, accuracy: 0.73730
+Epoch: 36/40, step: 5/49, loss: 0.73293, accuracy: 0.74902
+Epoch: 36/40, step: 6/49, loss: 0.63240, accuracy: 0.77539
+Epoch: 36/40, step: 7/49, loss: 0.74040, accuracy: 0.74414
+Epoch: 36/40, step: 8/49, loss: 0.68646, accuracy: 0.74609
+Epoch: 36/40, step: 9/49, loss: 0.65798, accuracy: 0.76074
+Epoch: 36/40, step: 10/49, loss: 0.70836, accuracy: 0.74512
+Epoch: 36/40, step: 11/49, loss: 0.66793, accuracy: 0.77246
+Epoch: 36/40, step: 12/49, loss: 0.63840, accuracy: 0.77148
+Epoch: 36/40, step: 13/49, loss: 0.68251, accuracy: 0.74902
+Epoch: 36/40, step: 14/49, loss: 0.73068, accuracy: 0.73828
+Epoch: 36/40, step: 15/49, loss: 0.70081, accuracy: 0.75488
+Epoch: 36/40, step: 16/49, loss: 0.71589, accuracy: 0.74609
+Epoch: 36/40, step: 17/49, loss: 0.59325, accuracy: 0.78516
+Epoch: 36/40, step: 18/49, loss: 0.66036, accuracy: 0.75586
+Epoch: 36/40, step: 19/49, loss: 0.79465, accuracy: 0.71680
+Epoch: 36/40, step: 20/49, loss: 0.72485, accuracy: 0.73438
+Epoch: 36/40, step: 21/49, loss: 0.69797, accuracy: 0.75781
+Epoch: 36/40, step: 22/49, loss: 0.68565, accuracy: 0.75195
+Epoch: 36/40, step: 23/49, loss: 0.64342, accuracy: 0.77344
+Epoch: 36/40, step: 24/49, loss: 0.72911, accuracy: 0.76855
+Epoch: 36/40, step: 25/49, loss: 0.62980, accuracy: 0.76758
+Epoch: 36/40, step: 26/49, loss: 0.64321, accuracy: 0.78320
+Epoch: 36/40, step: 27/49, loss: 0.74399, accuracy: 0.73828
+Epoch: 36/40, step: 28/49, loss: 0.72877, accuracy: 0.74219
+Epoch: 36/40, step: 29/49, loss: 0.68283, accuracy: 0.74609
+Epoch: 36/40, step: 30/49, loss: 0.69227, accuracy: 0.75293
+Epoch: 36/40, step: 31/49, loss: 0.69603, accuracy: 0.75000
+Epoch: 36/40, step: 32/49, loss: 0.67603, accuracy: 0.75488
+Epoch: 36/40, step: 33/49, loss: 0.71921, accuracy: 0.74512
+Epoch: 36/40, step: 34/49, loss: 0.72437, accuracy: 0.73145
+Epoch: 36/40, step: 35/49, loss: 0.68515, accuracy: 0.73926
+Epoch: 36/40, step: 36/49, loss: 0.66553, accuracy: 0.76465
+Epoch: 36/40, step: 37/49, loss: 0.70111, accuracy: 0.75488
+Inject worker: 7
+Inject layer: densenet_dense_block_1_bottleneck_5_conv2_grad_in
+Shape for target layer is (128, 8, 8, 128)
+Position is (97, 6, 6, 64), Golden data is -7.218306450340606e-07, inject data is 3.94178491970486e+17
+Position is (97, 6, 6, 65), Golden data is -1.025396272780199e-06, inject data is 1.19005756572702e-25
+Position is (97, 6, 6, 66), Golden data is -2.053381109590191e-08, inject data is 3.95981527149854e+27
+Position is (97, 6, 6, 67), Golden data is -5.114938517181145e-07, inject data is -1918.2119140625
+Position is (97, 6, 6, 68), Golden data is 3.9947659047356865e-07, inject data is -6.32413960010483e-22
+Position is (97, 6, 6, 69), Golden data is 2.8776165095223405e-07, inject data is -3.99260978977075e-19
+Position is (97, 6, 6, 70), Golden data is 1.7407120367352036e-07, inject data is 1.34225846244104e+20
+Position is (97, 6, 6, 71), Golden data is 3.3868073501253093e-07, inject data is -2.02371838802829e-38
+Position is (97, 6, 6, 72), Golden data is 2.920935457950691e-07, inject data is 2.29246386936337e-22
+Position is (97, 6, 6, 73), Golden data is 1.0114715678355424e-06, inject data is 1.7564288275991e-16
+Position is (97, 6, 6, 74), Golden data is -8.252730481217441e-07, inject data is -9.56452281392513e+32
+Position is (97, 6, 6, 75), Golden data is 2.630051483265561e-07, inject data is 1.24511370838491e+32
+Position is (97, 6, 6, 76), Golden data is -1.009486595648923e-06, inject data is 2.17806346964461e+29
+Position is (97, 6, 6, 77), Golden data is -1.1187863719896995e-06, inject data is 1.33671702269106e+25
+Position is (97, 6, 6, 78), Golden data is 1.4405446790988208e-07, inject data is -1.08732101250536e+19
+Position is (97, 6, 6, 79), Golden data is 1.5341653352152207e-06, inject data is 8.79203258591019e-16
+Epoch: 36/40, step: 38/49, loss: 0.71243, accuracy: 0.75293
+Epoch: 36/40, step: 39/49, loss: 0.77622, accuracy: 0.72168
+Epoch: 36/40, step: 40/49, loss: 0.82116, accuracy: 0.70703
+Epoch: 36/40, step: 41/49, loss: 0.82618, accuracy: 0.70508
+Epoch: 36/40, step: 42/49, loss: 0.88587, accuracy: 0.69824
+Epoch: 36/40, step: 43/49, loss: 0.91006, accuracy: 0.69043
+Epoch: 36/40, step: 44/49, loss: 0.87004, accuracy: 0.68359
+Epoch: 36/40, step: 45/49, loss: 0.93041, accuracy: 0.65527
+Epoch: 36/40, step: 46/49, loss: 0.88958, accuracy: 0.68848
+Epoch: 36/40, step: 47/49, loss: 0.88947, accuracy: 0.67383
+Epoch: 36/40, step: 48/49, loss: 0.90150, accuracy: 0.66602
+Epoch: 37/40, step: 0/49, loss: 0.96679, accuracy: 0.66309
+Epoch: 37/40, step: 1/49, loss: 0.94620, accuracy: 0.67676
+Epoch: 37/40, step: 2/49, loss: 0.96850, accuracy: 0.65137
+Epoch: 37/40, step: 3/49, loss: 1.02083, accuracy: 0.64746
+Epoch: 37/40, step: 4/49, loss: 1.00870, accuracy: 0.64648
+Epoch: 37/40, step: 5/49, loss: 0.92049, accuracy: 0.68164
+Epoch: 37/40, step: 6/49, loss: 0.97679, accuracy: 0.65234
+Epoch: 37/40, step: 7/49, loss: 0.98899, accuracy: 0.65332
+Epoch: 37/40, step: 8/49, loss: 0.96105, accuracy: 0.66016
+Epoch: 37/40, step: 9/49, loss: 1.00007, accuracy: 0.65332
+Epoch: 37/40, step: 10/49, loss: 1.03740, accuracy: 0.63867
+Epoch: 37/40, step: 11/49, loss: 1.01376, accuracy: 0.63770
+Epoch: 37/40, step: 12/49, loss: 0.94516, accuracy: 0.67285
+Epoch: 37/40, step: 13/49, loss: 0.97858, accuracy: 0.63867
+Epoch: 37/40, step: 14/49, loss: 1.08828, accuracy: 0.59766
+Epoch: 37/40, step: 15/49, loss: 1.00690, accuracy: 0.65039
+Epoch: 37/40, step: 16/49, loss: 0.99664, accuracy: 0.62695
+Epoch: 37/40, step: 17/49, loss: 0.94898, accuracy: 0.65234
+Epoch: 37/40, step: 18/49, loss: 1.05457, accuracy: 0.60449
+Epoch: 37/40, step: 19/49, loss: 1.10341, accuracy: 0.58887
+Epoch: 37/40, step: 20/49, loss: 1.00805, accuracy: 0.64258
+Epoch: 37/40, step: 21/49, loss: 1.03484, accuracy: 0.64844
+Epoch: 37/40, step: 22/49, loss: 1.00382, accuracy: 0.64258
+Epoch: 37/40, step: 23/49, loss: 1.00976, accuracy: 0.62109
+Epoch: 37/40, step: 24/49, loss: 1.01928, accuracy: 0.64160
+Epoch: 37/40, step: 25/49, loss: 0.97342, accuracy: 0.67188
+Epoch: 37/40, step: 26/49, loss: 1.00133, accuracy: 0.65039
+Epoch: 37/40, step: 27/49, loss: 1.04581, accuracy: 0.64648
+Epoch: 37/40, step: 28/49, loss: 1.01917, accuracy: 0.62891
+Epoch: 37/40, step: 29/49, loss: 0.98204, accuracy: 0.65527
+Epoch: 37/40, step: 30/49, loss: 1.02909, accuracy: 0.63184
+Epoch: 37/40, step: 31/49, loss: 0.97904, accuracy: 0.67773
+Epoch: 37/40, step: 32/49, loss: 0.97029, accuracy: 0.65234
+Epoch: 37/40, step: 33/49, loss: 1.04939, accuracy: 0.64258
+Epoch: 37/40, step: 34/49, loss: 0.98514, accuracy: 0.64746
+Epoch: 37/40, step: 35/49, loss: 1.02397, accuracy: 0.63867
+Epoch: 37/40, step: 36/49, loss: 1.05931, accuracy: 0.62891
+Epoch: 37/40, step: 37/49, loss: 1.10867, accuracy: 0.61328
+Epoch: 37/40, step: 38/49, loss: 1.05461, accuracy: 0.63867
+Epoch: 37/40, step: 39/49, loss: 1.03580, accuracy: 0.63770
+Epoch: 37/40, step: 40/49, loss: 1.12644, accuracy: 0.60840
+Epoch: 37/40, step: 41/49, loss: 1.02847, accuracy: 0.63281
+Epoch: 37/40, step: 42/49, loss: 1.03715, accuracy: 0.63770
+Epoch: 37/40, step: 43/49, loss: 0.98518, accuracy: 0.64844
+Epoch: 37/40, step: 44/49, loss: 1.02436, accuracy: 0.65820
+Epoch: 37/40, step: 45/49, loss: 1.01750, accuracy: 0.64160
+Epoch: 37/40, step: 46/49, loss: 0.99640, accuracy: 0.64941
+Epoch: 37/40, step: 47/49, loss: 0.97086, accuracy: 0.64258
+Epoch: 37/40, step: 48/49, loss: 0.93020, accuracy: 0.66016
+Epoch: 38/40, step: 0/49, loss: 0.99605, accuracy: 0.65234
+Epoch: 38/40, step: 1/49, loss: 0.95896, accuracy: 0.65723
+Epoch: 38/40, step: 2/49, loss: 1.03142, accuracy: 0.61426
+Epoch: 38/40, step: 3/49, loss: 1.02883, accuracy: 0.63086
+Epoch: 38/40, step: 4/49, loss: 0.95721, accuracy: 0.67090
+Epoch: 38/40, step: 5/49, loss: 0.93020, accuracy: 0.67188
+Epoch: 38/40, step: 6/49, loss: 1.02990, accuracy: 0.64355
+Epoch: 38/40, step: 7/49, loss: 0.95805, accuracy: 0.64355
+Epoch: 38/40, step: 8/49, loss: 0.97543, accuracy: 0.64941
+Epoch: 38/40, step: 9/49, loss: 1.03737, accuracy: 0.61816
+Epoch: 38/40, step: 10/49, loss: 1.01185, accuracy: 0.65820
+Epoch: 38/40, step: 11/49, loss: 0.96367, accuracy: 0.64258
+Epoch: 38/40, step: 12/49, loss: 0.90527, accuracy: 0.68652
+Epoch: 38/40, step: 13/49, loss: 0.96886, accuracy: 0.65039
+Epoch: 38/40, step: 14/49, loss: 0.98978, accuracy: 0.64453
+Epoch: 38/40, step: 15/49, loss: 0.95038, accuracy: 0.66504
+Epoch: 38/40, step: 16/49, loss: 0.96685, accuracy: 0.65625
+Epoch: 38/40, step: 17/49, loss: 0.89953, accuracy: 0.68359
+Epoch: 38/40, step: 18/49, loss: 0.99928, accuracy: 0.64062
+Epoch: 38/40, step: 19/49, loss: 1.08603, accuracy: 0.61719
+Epoch: 38/40, step: 20/49, loss: 0.96745, accuracy: 0.65625
+Epoch: 38/40, step: 21/49, loss: 0.94937, accuracy: 0.64746
+Epoch: 38/40, step: 22/49, loss: 0.89430, accuracy: 0.69141
+Epoch: 38/40, step: 23/49, loss: 1.03620, accuracy: 0.62109
+Epoch: 38/40, step: 24/49, loss: 1.01445, accuracy: 0.64941
+Epoch: 38/40, step: 25/49, loss: 0.95504, accuracy: 0.68652
+Epoch: 38/40, step: 26/49, loss: 0.92888, accuracy: 0.68262
+Epoch: 38/40, step: 27/49, loss: 0.99419, accuracy: 0.64551
+Epoch: 38/40, step: 28/49, loss: 0.99396, accuracy: 0.62598
+Epoch: 38/40, step: 29/49, loss: 0.90886, accuracy: 0.68262
+Epoch: 38/40, step: 30/49, loss: 0.91466, accuracy: 0.67676
+Epoch: 38/40, step: 31/49, loss: 0.96279, accuracy: 0.67090
+Epoch: 38/40, step: 32/49, loss: 0.99623, accuracy: 0.61523
+Epoch: 38/40, step: 33/49, loss: 0.97850, accuracy: 0.65039
+Epoch: 38/40, step: 34/49, loss: 0.93518, accuracy: 0.66895
+Epoch: 38/40, step: 35/49, loss: 0.92659, accuracy: 0.65234
+Epoch: 38/40, step: 36/49, loss: 0.99078, accuracy: 0.64258
+Epoch: 38/40, step: 37/49, loss: 0.95286, accuracy: 0.66895
+Epoch: 38/40, step: 38/49, loss: 0.94791, accuracy: 0.67578
+Epoch: 38/40, step: 39/49, loss: 0.95431, accuracy: 0.66016
+Epoch: 38/40, step: 40/49, loss: 0.97586, accuracy: 0.64355
+Epoch: 38/40, step: 41/49, loss: 0.97441, accuracy: 0.65723
+Epoch: 38/40, step: 42/49, loss: 0.91737, accuracy: 0.67188
+Epoch: 38/40, step: 43/49, loss: 0.99882, accuracy: 0.65723
+Epoch: 38/40, step: 44/49, loss: 0.99230, accuracy: 0.65332
+Epoch: 38/40, step: 45/49, loss: 0.95786, accuracy: 0.65527
+Epoch: 38/40, step: 46/49, loss: 0.92135, accuracy: 0.66895
+Epoch: 38/40, step: 47/49, loss: 0.90893, accuracy: 0.66309
+Epoch: 38/40, step: 48/49, loss: 0.90958, accuracy: 0.67090
+Epoch: 39/40, step: 0/49, loss: 0.96875, accuracy: 0.66211
+Epoch: 39/40, step: 1/49, loss: 0.94276, accuracy: 0.66797
+Epoch: 39/40, step: 2/49, loss: 0.96252, accuracy: 0.65527
+Epoch: 39/40, step: 3/49, loss: 0.95776, accuracy: 0.65430
+Epoch: 39/40, step: 4/49, loss: 0.98435, accuracy: 0.65039
+Epoch: 39/40, step: 5/49, loss: 0.90809, accuracy: 0.67188
+Epoch: 39/40, step: 6/49, loss: 0.94411, accuracy: 0.67676
+Epoch: 39/40, step: 7/49, loss: 0.96209, accuracy: 0.64160
+Epoch: 39/40, step: 8/49, loss: 0.93143, accuracy: 0.67773
+Epoch: 39/40, step: 9/49, loss: 0.93852, accuracy: 0.66602
+Epoch: 39/40, step: 10/49, loss: 0.92411, accuracy: 0.67188
+Epoch: 39/40, step: 11/49, loss: 0.92764, accuracy: 0.67188
+Epoch: 39/40, step: 12/49, loss: 0.86602, accuracy: 0.68457
+Epoch: 39/40, step: 13/49, loss: 0.94531, accuracy: 0.68652
+Epoch: 39/40, step: 14/49, loss: 0.93764, accuracy: 0.66016
+Epoch: 39/40, step: 15/49, loss: 0.92602, accuracy: 0.68066
+Epoch: 39/40, step: 16/49, loss: 0.92418, accuracy: 0.67773
+Epoch: 39/40, step: 17/49, loss: 0.91538, accuracy: 0.65918
+Epoch: 39/40, step: 18/49, loss: 0.95240, accuracy: 0.63867
+Epoch: 39/40, step: 19/49, loss: 1.05416, accuracy: 0.63086
+Epoch: 39/40, step: 20/49, loss: 0.91483, accuracy: 0.67871
+Epoch: 39/40, step: 21/49, loss: 0.90420, accuracy: 0.69238
+Epoch: 39/40, step: 22/49, loss: 0.88922, accuracy: 0.68457
+Epoch: 39/40, step: 23/49, loss: 0.93119, accuracy: 0.66016
+Epoch: 39/40, step: 24/49, loss: 0.93960, accuracy: 0.68066
+Epoch: 39/40, step: 25/49, loss: 0.90490, accuracy: 0.68652
+Epoch: 39/40, step: 26/49, loss: 0.90594, accuracy: 0.68164
+Epoch: 39/40, step: 27/49, loss: 0.94369, accuracy: 0.67285
+Epoch: 39/40, step: 28/49, loss: 0.95293, accuracy: 0.65723
+Epoch: 39/40, step: 29/49, loss: 0.89192, accuracy: 0.68750
+Epoch: 39/40, step: 30/49, loss: 0.93619, accuracy: 0.67871
+Epoch: 39/40, step: 31/49, loss: 0.91274, accuracy: 0.68750
+Epoch: 39/40, step: 32/49, loss: 0.92341, accuracy: 0.67480
+Epoch: 39/40, step: 33/49, loss: 0.95722, accuracy: 0.65332
+Epoch: 39/40, step: 34/49, loss: 0.92214, accuracy: 0.68066
+Epoch: 39/40, step: 35/49, loss: 0.92656, accuracy: 0.65723
+Epoch: 39/40, step: 36/49, loss: 0.97403, accuracy: 0.66309
+Epoch: 39/40, step: 37/49, loss: 0.95587, accuracy: 0.66113
+Epoch: 39/40, step: 38/49, loss: 0.93103, accuracy: 0.67676
+Epoch: 39/40, step: 39/49, loss: 0.88622, accuracy: 0.70117
+Epoch: 39/40, step: 40/49, loss: 0.97217, accuracy: 0.65039
+Epoch: 39/40, step: 41/49, loss: 0.92570, accuracy: 0.67383
+Epoch: 39/40, step: 42/49, loss: 0.86175, accuracy: 0.68555
+Epoch: 39/40, step: 43/49, loss: 0.90667, accuracy: 0.68945
+Epoch: 39/40, step: 44/49, loss: 0.92257, accuracy: 0.68555
+Epoch: 39/40, step: 45/49, loss: 0.91920, accuracy: 0.66797
+Epoch: 39/40, step: 46/49, loss: 0.86317, accuracy: 0.68652
+Epoch: 39/40, step: 47/49, loss: 0.91550, accuracy: 0.66602
+Epoch: 39/40, step: 48/49, loss: 0.87101, accuracy: 0.69531
