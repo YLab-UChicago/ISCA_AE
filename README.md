@@ -11,14 +11,12 @@ To create a Cloud TPU VM, execute:
 export PROJECT_ID=${PROJECT_ID}
 gcloud alpha compute tpus tpu-vm create ${TPU_NAME} --zone={TPU_LOCATION} --accelerator-type={TPU_TYPE} --version=v2-alpha
 ```
-(This command might take a few minutes)
 
 Then ssh to the TPU VM:
-(SSH might return error message when TPU is still in initialization. Wait for a while and the connection will be built.)
+
 ```
 gcloud alpha compute tpus tpu-vm ssh ${TPU_NAME} --zone=${TPU_LOCATION} --project ${PROJECT_ID}
 ```
-
 For Seena:
 ```
 PROJECT_ID=superb-runner-316121
@@ -39,10 +37,6 @@ sudo pip3 uninstall -y numpy
 pip3 install numpy==1.19.5
 ```
 
-After ssh to TPU VM, download our code at :
-```
-git clone https://github.com/YLab-UChicago/ISCA_AE.git
-```
 
 ## Fault injection to DNN training workloads
 

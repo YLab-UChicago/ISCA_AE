@@ -3,15 +3,6 @@ from local_tpu_resolver import LocalTPUClusterResolver
 
 from models.resnet import resnet_18
 from models.backward_resnet import backward_resnet_18
-from models.resnet_nobn import resnet_18_nobn
-from models.backward_resnet_nobn import backward_resnet_18_nobn
-from models import efficientnet
-from models import backward_efficientnet
-from models import densenet
-from models import backward_densenet
-from models import nf_resnet
-from models import backward_nf_resnet
-
 import config
 from prepare_data import generate_datasets
 import math
@@ -27,11 +18,6 @@ tf.random.set_seed(123)
 
 golden_grad_idx = {
     'resnet18': -2,
-    'resnet18_nobn': -2,
-    'resnet18_sgd': -2,
-    'effnet': -4,
-    'densenet': -2,
-    'nfnet': -2
     }
 
 class Replay():
@@ -55,30 +41,10 @@ def parse_args():
 
 
 def get_model(m_name, seed):
-    if m_name == 'resnet18' or m_name == 'resnet18_sgd':
+    if m_name == 'resnet18':
         model = resnet_18(seed, m_name)
         model.build(input_shape=(None, config.image_height, config.image_width, config.channels))
         back_model = backward_resnet_18(m_name)
-
-    elif m_name == 'resnet18_nobn':
-        model = resnet_18_nobn(seed)
-        model.build(input_shape=(None, config.image_height, config.image_width, config.channels))
-        back_model = backward_resnet_18_nobn()
-
-    elif m_name == 'effnet':
-        model = efficientnet.efficient_net_b0(seed)
-        model.build(input_shape=(None, config.image_height, config.image_width, config.channels))
-        back_model = backward_efficientnet.backward_efficient_net_b0()
-
-    elif m_name == 'densenet':
-        model = densenet.densenet_121(seed)
-        model.build(input_shape=(None, config.image_height, config.image_width, config.channels))
-        back_model = backward_densenet.backward_densenet_121()
-
-    elif m_name == 'nfnet':
-        model = nf_resnet.NF_ResNet(num_classes=10, seed=seed, alpha=1, stochdepth_rate=0)
-        model.build(input_shape=(None, config.image_height, config.image_width, config.channels))
-        back_model = backward_nf_resnet.BackwardNF_ResNet(num_classes=10, alpha=1, stochdepth_rate=0)
 
     return model, back_model
 
@@ -109,26 +75,15 @@ def main():
     with strategy.scope():
         model, back_model = get_model(rp.model, rp.seed)
 	# define loss and optimizer
-        if 'sgd' in rp.model:
-            lr_schedule = tf.keras.optimizers.schedules.PolynomialDecay(
-            	initial_learning_rate=rp.learning_rate,
-            	decay_steps = 2000,
-            	end_learning_rate=0.001)
-            model.optimizer = tf.keras.optimizers.SGD(learning_rate=lr_schedule)
-        elif 'effnet' in rp.model:
-            lr_schedule = tf.keras.optimizers.schedules.PolynomialDecay(
+        lr_schedule = tf.keras.optimizers.schedules.PolynomialDecay(
                 initial_learning_rate=rp.learning_rate,
-                decay_steps = 2000,
-                end_learning_rate=0.0005)
-            model.optimizer = tf.keras.optimizers.Adam(learning_rate=lr_schedule)
-        else:
-            lr_schedule = tf.keras.optimizers.schedules.PolynomialDecay(
-                initial_learning_rate=rp.learning_rate,
-                decay_steps = 5000,
+                decay_steps = 4000,
                 end_learning_rate=0.0001)
-            model.optimizer = tf.keras.optimizers.Adam(learning_rate=lr_schedule)
+        model.optimizer = tf.keras.optimizers.Adam(learning_rate=lr_schedule)
         train_loss = tf.keras.metrics.Mean(name='train_loss')
         train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='train_accuracy')
+        epoch_loss = tf.keras.metrics.Mean(name='epoch_loss')
+        epoch_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='epoch_accuracy')
         valid_loss = tf.keras.metrics.Mean(name='valid_loss')
         valid_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='valid_accuracy')
 
@@ -148,6 +103,9 @@ def main():
 
             train_loss.update_state(avg_loss * strategy.num_replicas_in_sync)
             train_accuracy.update_state(labels, predictions)
+            epoch_loss.update_state(avg_loss * strategy.num_replicas_in_sync)
+            epoch_accuracy.update_state(labels, predictions)
+
             return avg_loss
 
         return strategy.run(step_fn, args=(next(iterator),))
@@ -181,6 +139,9 @@ def main():
 
             train_loss.update_state(avg_loss * strategy.num_replicas_in_sync)
             train_accuracy.update_state(labels, predictions)
+            epoch_loss.update_state(avg_loss * strategy.num_replicas_in_sync)
+            epoch_accuracy.update_state(labels, predictions)
+
             return avg_loss
 
         return strategy.run(step2_fn, args=(iter_inputs, inj_flag))
@@ -219,7 +180,8 @@ def main():
 
             train_loss.update_state(avg_loss * strategy.num_replicas_in_sync)
             train_accuracy.update_state(labels, predictions)
-
+            epoch_loss.update_state(avg_loss * strategy.num_replicas_in_sync)
+            epoch_accuracy.update_state(labels, predictions)
             return avg_loss
 
         return strategy.run(step2_fn, args=(iter_inputs, inj_flag))
@@ -261,6 +223,9 @@ def main():
             break
         train_loss.reset_states()
         train_accuracy.reset_states()
+        epoch_loss.reset_states()
+        epoch_accuracy.reset_states()
+
         valid_loss.reset_states()
         valid_accuracy.reset_states()
         step = 0
@@ -308,8 +273,8 @@ def main():
             record(train_recorder, "End of epoch: {}/{}, train loss: {:.5f}, train accuracy: {:.5f}, "
                 "valid loss: {:.5f}, valid accuracy: {:.5f}\n".format(epoch,
                              config.EPOCHS,
-                             train_loss.result(),
-                             train_accuracy.result(),
+                             epoch_loss.result(),
+                             epoch_accuracy.result(),
                              valid_loss.result(),
                              valid_accuracy.result()))
 
