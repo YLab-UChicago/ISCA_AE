@@ -1,114 +1,128 @@
 # ISCA50_AE
 
+We provide our fault injection framework for ResNet18. The methodology to inject faults into the DNN training program is similar for all workloads. We will open-source the complete fault injection framework for all DNN workloads.
+
+In each fault injection experiment, we pick a random training epoch, a random training step, a random layer (selected from both layers in the forward pass and the backward pass), and a random software fault model, and continue training the workload to observe the outcome.
+
+In order to inject faults to the backward pass and also correctly propagate the error effects, we manually implemented the backward pass for each workload, which can be found in the `fault\_injection/models` folder.
+
+We have performed 2.9M fault injection experiments to obtain statistical results. In this artifact evaluation, we provide three reproducible examples of fault injections that correspond to three outcomes (Masked, Immediate INFs/NaNs, and SlowDegrade) reported in our paper. 
+
+We also provide instructions for running more fault injection experiments.
+
 ## System Requirements
-
+### Hardware dependencies
 Our framework runs on Google Cloud TPU VMs.
-Please check [this page](https://cloud.google.com/tpu/docs/users-guide-tpu-vm) for how to create TPU VMs in Google Cloud.
+### Software dependencies
+Our framework requires the following tools:
 
-To create a Cloud TPU VM, execute:
+```
+Tensorflow 2.6.0
+Numpy 1.19.5
+Gdown 4.6.4
+```
+
+## Installation 
+
+### Step 1. create Google Cloud TPU VM
 
 ```
 export PROJECT_ID=${PROJECT_ID}
 gcloud alpha compute tpus tpu-vm create ${TPU_NAME} --zone={TPU_LOCATION} --accelerator-type={TPU_TYPE} --version=v2-alpha
 ```
 
-Then ssh to the TPU VM:
+```
+PROJECT_ID: The Google cloud user ID.
+TPU_NAME: A user defined name.
+TPU_LOCATION: The cloud region, e.g., us-central1-a.
+TPU_TYPE: The type of the cloud TPU, e.g., v2-8.
+```
+
+For more details on creating TPU VMs, please check [this page](https://cloud.google.com/tpu/docs/users-guide-tpu-vm).
+
+
+### Step 2. ssh to the TPU VM:
 
 ```
 gcloud alpha compute tpus tpu-vm ssh ${TPU_NAME} --zone=${TPU_LOCATION} --project ${PROJECT_ID}
 ```
-For Seena:
-```
-PROJECT_ID=superb-runner-316121
-TPU_LOCATION=us-central1-b or us-central1-f
-TPU_TYPE=v2-8
-```
 
-
-Our framework requires the following tools:
-
-Tensorflow: v2.6.0
-
-Numpy: v1.19.5
-
-For Seena: if numpy is in a wrong version, execute:
-```
-sudo pip3 uninstall -y numpy
-pip3 install numpy==1.19.5
-```
-
-
-## Fault injection to DNN training workloads
-
-This folder implements our fault injection framework for representative DNN training workloads. The methodolgy to inject failures to DNN workloads is similar among workloads. We will open source the fault injection framework for other DNN workloads in the future.
-
-Each time, we pick a random training epoch, a random training step, a random layer (including both layers in the forward pass and the backward pass) and a random software fault model to inject hardware failure, and continue training the workloads to observe the outcomes.
-
-In order to inject failures to the backward pass, and also correctly propagate the error effects, we manually implemented the backward pass for each workloads, which can be found in the `fault_injection/models` folder.
-
-We provide reproducible examples of fault injections that generates unexpected outcomes reported in our paper. These injection examples can be found in the `fault_injection/injections` folder. Each injection example is a csv file which includes the details of the fault injection configs such as the target epoch, step, layer, fault model and faulty values. For example, the file `fault_injection/injections/resnet18/inj_immediate_infs_nans.csv` represents a fault injection example that generates immediate INFs/NaNs for the Resnet18 workload.
-
-### For Seena: trick that track the execution while program is running:
-Before executing any command, run `screen` first to enter a screen.
-
-Then run the `python3 reproduce_injections.py` program (see below).
-
-Then use Ctrl-A then Ctrl-D to go back to bash. You can check the output file or do anything.
-
-Use `screen -r` to go back to the screen that runs the program.
-
-
-Step 1. Download existing [checkpoints](https://drive.google.com/drive/folders/1HVRFWY7NI5xr5qzR8yNeSKCRVnJNnqFf?usp=sharing), and place them under `fault_injection/ISCA_AE_CKPT`. We use these checkpoints as each fault injection experiment resume the model from the beginning of the target epoch.
-
-To download the checkpoints in TPU VM comamnd line, use gdown in Google cloud command line API:
+### Step 3. check numpy and tensorflow versions
 
 ```
-cd fault_injection
-pip install gdown
+import numpy
+numpy.__version__
+import tensorflow
+tensorflow.__version__
+```
+Make sure that the version of numpy is 1.19.5, and the version of tensorflow is 2.6.0. If the versions don't match, please install the correct versions.
+
+
+### Step 4. clone our github repo.
+```
+git clone git@github.com:YLab-UChicago/ISCA_AE.git
+```
+
+### Step 5. Download checkpoints from Google Drive.
+
+```
+pip install gdown 
 gdown --folder https://drive.google.com/drive/folders/1HVRFWY7NI5xr5qzR8yNeSKCRVnJNnqFf?usp=sharing
-mv ISCA_AE_CKPT/* .
 ```
+If gdown cannot be found, specify the full path where gdown is installed, mostly likely in \~/.local/bin.
 
-Step 2. Run example injections:
 
-```
-  cd fault_injection
-  python3 reproduce_injections.py --file injections/TARGET_INJECTION
-```
+## Experiment workflow
 
-For Seena, we only need to run resnet18, so execute:
+The `reproduce_injections.py` file is the top-level program to perform the entire workflow of a fault injection experiment, which takes in one argument `--file`, which specifies the injection configs, e.g., the target training epoch, target training step, target layer, faulty values, etc. The configs of our three examples are provided in the `injections` folder.
+
+For each injection, the program generates an output file named `replay_inj_TARGET_INJECTION.txt` file under the `fault_injection` directory, which records the training loss, training accuracy for each training iteration, and test loss and test accuracy for each epoch. For Example 1, the file will also record when INF/NaN values are observed.
+
+To execute each example, run:
+
+### Example 1 (takes approximately 5 minutes). 
 ```
 cd fault_injection
-python3 reproduce_injections.py --file injections/resnet18/TARGET_INJECTION
+python3 reproduce_injections.py --file injections/resnet18/inj_immediate_infs_nans.csv
 ```
 
-This command generate a `replay_inj_TARGET_INJECTION.txt` file in the `fault_injection` folder, which records the losses, training accuracy and test accuracy for each training iteration / epoch. It will also records when INF/NaN values will be observed.
-
-The exepected execution outcomes for each example are provided in the `fault_injection/expected_results` folder. Notice that, due to the randomness exists in training workloads, each time the result might varies a little bit. But the unexpected outcomes should still be exhibited.
-
-Users can also specify their own injection csv files to inject arbitrary failures to the workloads.
-
-
-### For Seena: no need to run below
-## Implementation and evaluation of our technique
-This folder implements our light-weight hardware failure detection and mitigation techinque.
-The detection technique is implemented in folder `technique/detection`.
-To run the technique, execute:
-
+### Example 2 (takes approximately 10-15 minutes).
 ```
-  cd technique/detection
-  python3 detection.py
+cd fault_injection
+python3 reproduce_injections.py --file injections/resnet18/inj_masked.csv
 ```
 
-This will run our technique that compares history values in optimizers, or check the moving variance values in normalization layers. This command generates a `train_recorder.txt` file in folder `technique/detection`, which records the checking results for every training iteration.
-
-The mitigation technique is implemented in folder `technique/replay`.
-To run the technique, execute:
-
+### Example 3 (takes approximately 10-15 minutes).
 ```
-  cd technique/replay
-  python3 replay.py
+cd fault_injection
+python3 reproduce_injections.py --file injections/resnet18/inj_slow_degrade.csv
 ```
 
-This will run our technique that re-execute the most recent two training iterations when the re-execution signal is enabled. This command generates a `train_recorder.txt` file in folder `technique/detection`, which records the loss and accuracy for each training iteration and also demonstrate the progress of re-execution. To demonstrate our technique, in this implementation, re-execution is enabled for every 20 iterations. In real applications, re-execution will only be triggered when we detect a hardware failure, using our detection technique. Notice that, due to the randomness in training workloads, re-execution of previous iterations do not necessarily generate the exact same loss or accuracy values.
+## Evaluation and expected results
 
+Once each experiment is done, the output file should contain the following information:
+
+### Example 1.
+NaN values are reported in the same training iteration (epoch 19, iteration 38) where the fault is injected.
+
+A sample expected output file for this example can be found in `fault_injection/expected_results/replay_inj_immediate_infs_nans.txt`.
+    
+### Example 2.
+After the fault is injected, both the training and test accuracy keeps improving as the training process continues. The final training accuracy is within ~2% compared with the fault-free run.
+
+A sample expected output file for this example can be found in `fault_injection/expected_results/replay_inj_masked.txt`.
+A sample fault-free output file can be found in `fault_injection/expected_results/fault_free.txt`.
+    
+    
+### Example 3.
+After the fault is injected, the training accuracy degrades, then stays at a low level through. The final accuracy is significantly lower than that of the error-free runs.
+
+A sample expected output file for this example can be found in `fault_injection/expected_results/replay_inj_slow_degrade.txt`.
+    
+    
+## Experiment customization
+To run other examples, one can modify the `inj_TARGET_INJECTION.csv` files under the `injection` folder and specify different training epochs, training steps, target layers, and faulty values. Checkpoints that belong to other epochs can be downloaded through:
+```
+    gdown --folder https://drive.google.com/drive/folders/1B4ptjedCX4e1PbzZWVe5Ydfe48BvSwzt?usp=sharing
+```
+The evaluation process is similar to the examples provided.
