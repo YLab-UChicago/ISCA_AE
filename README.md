@@ -69,7 +69,7 @@ git clone git@github.com:YLab-UChicago/ISCA_AE.git
 pip install gdown 
 gdown --folder https://drive.google.com/drive/folders/1HVRFWY7NI5xr5qzR8yNeSKCRVnJNnqFf?usp=sharing
 ```
-If gdown cannot be found, specify the full path where gdown is installed, mostly likely in \~/.local/bin.
+If gdown cannot be found, specify the full path where gdown is installed, mostly likely in `\~/.local/bin`.
 
 
 ## Experiment workflow
