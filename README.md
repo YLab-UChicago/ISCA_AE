@@ -1,10 +1,10 @@
 # ISCA50_AE
 
-We provide our fault injection framework for ResNet18. The methodology to inject faults into the DNN training program is similar for all workloads. We will open-source the complete fault injection framework for all DNN workloads.
+We provide our fault injection framework used in our study. The methodology to inject faults into the DNN training program is similar for all workloads. We will open-source the complete fault injection framework for all DNN workloads.
 
 In each fault injection experiment, we pick a random training epoch, a random training step, a random layer (selected from both layers in the forward pass and the backward pass), and a random software fault model, and continue training the workload to observe the outcome.
 
-In order to inject faults to the backward pass and also correctly propagate the error effects, we manually implemented the backward pass for each workload, which can be found in the `fault\_injection/models` folder.
+In order to inject faults to the backward pass and also correctly propagate the error effects, we manually implemented the backward pass for each workload, which can be found in the `fault_injection/models` folder.
 
 We have performed 2.9M fault injection experiments to obtain statistical results. In this artifact evaluation, we provide three reproducible examples of fault injections that correspond to three outcomes (Masked, Immediate INFs/NaNs, and SlowDegrade) reported in our paper. 
 
