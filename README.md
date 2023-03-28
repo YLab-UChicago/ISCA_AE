@@ -60,7 +60,7 @@ Make sure that the version of numpy is 1.19.5, and the version of tensorflow is 
 
 ### Step 4. clone our github repo.
 ```
-git clone git@github.com:YLab-UChicago/ISCA_AE.git
+git clone  https://github.com/YLab-UChicago/ISCA_AE.git
 ```
 
 ### Step 5. Download checkpoints from Google Drive.
@@ -69,7 +69,7 @@ git clone git@github.com:YLab-UChicago/ISCA_AE.git
 pip install gdown 
 gdown --folder https://drive.google.com/drive/folders/1HVRFWY7NI5xr5qzR8yNeSKCRVnJNnqFf?usp=sharing
 ```
-If gdown cannot be found, specify the full path where gdown is installed, mostly likely in `\~/.local/bin`.
+The commands above download checkpoints to folder `fault_injection/ISCA_AE_CKPT`. Please keep this folder name. If `gdown` cannot be found, specify the full path where gdown is installed, mostly likely in `\~/.local/bin`.
 
 
 ## Experiment workflow
@@ -83,19 +83,19 @@ To execute each example, run:
 ### Example 1 (takes approximately 5 minutes). 
 ```
 cd fault_injection
-python3 reproduce_injections.py --file injections/resnet18/inj_immediate_infs_nans.csv
+python3 reproduce_injections.py --file injections/inj_immediate_infs_nans.csv
 ```
 
 ### Example 2 (takes approximately 10-15 minutes).
 ```
 cd fault_injection
-python3 reproduce_injections.py --file injections/resnet18/inj_masked.csv
+python3 reproduce_injections.py --file injections/inj_masked.csv
 ```
 
 ### Example 3 (takes approximately 10-15 minutes).
 ```
 cd fault_injection
-python3 reproduce_injections.py --file injections/resnet18/inj_slow_degrade.csv
+python3 reproduce_injections.py --file injections/inj_slow_degrade.csv
 ```
 
 ## Evaluation and expected results
@@ -121,7 +121,7 @@ A sample expected output file for this example can be found in `fault_injection/
     
     
 ## Experiment customization
-To run other examples, one can modify the `inj_TARGET_INJECTION.csv` files under the `injection` folder and specify different training epochs, training steps, target layers, and faulty values. Checkpoints that belong to other epochs can be downloaded through:
+To run other examples, one can modify the three example files under the `injection` folder and specify different training epochs, training steps, target layers, and faulty values. Checkpoints that belong to other epochs can be downloaded through:
 ```
     gdown --folder https://drive.google.com/drive/folders/1B4ptjedCX4e1PbzZWVe5Ydfe48BvSwzt?usp=sharing
 ```
